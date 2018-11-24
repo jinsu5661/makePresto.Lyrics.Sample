@@ -25,7 +25,7 @@ namespace Presto.SWCamp.Lyrics
     {
      
         private SortedList<TimeSpan, string> _lyrice = new SortedList<TimeSpan, string>();
-
+     
         public LyricsWindow()
         {
             InitializeComponent();
@@ -37,21 +37,20 @@ namespace Presto.SWCamp.Lyrics
 
            
             var lines = File.ReadAllLines(path + "볼빨간사춘기 - 여행.LRC");
+           
 
-            // var lines1 = File.ReadAllLines(path + Text + ".lrc");
-
-
-            
-           for (int i = 3; i <lines.Length; i++)
-            // foreach (var line in lines)
+           // for (int i = 3; i < lines.Length; i++)
+            foreach (var line in lines)
             {
-                string[] splitData = lines[i].Split(']');
+               String[] splitData = line.Split(']');
                 var time = TimeSpan.ParseExact("00:04.98", @"mm\:ss\.ff", CultureInfo.InvariantCulture);
 
-                _lyrice.Add(time, splitData[i-3]);
-               
+                for (int i = 0; i < line.Length; i++)
+                   // _lyrice.Add(time, splitData[i]);
+
+                testLytics.Text = PrestoSDK.PrestoService.Player.Position.ToString(_lyrice.ToString());
             }
-          
+
             var timer = new DispatcherTimer
             {
                 Interval = TimeSpan.FromMilliseconds(1)
@@ -68,8 +67,7 @@ namespace Presto.SWCamp.Lyrics
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-           // testLytics.Text = PrestoSDK.PrestoService.Player.Position.ToString();
-            
+            // testLytics.Text = PrestoSDK.PrestoService.Player.Position.ToString();
 
         }
 
