@@ -48,7 +48,7 @@ namespace Presto.SWCamp.Lyrics
                 for (int i = 0; i < line.Length; i++)
                    // _lyrice.Add(time, splitData[i]);
 
-                testLytics.Text = PrestoSDK.PrestoService.Player.Position.ToString(_lyrice.ToString());
+                testLytics.Text = PrestoSDK.PrestoService.Player.Position.ToString();
             }
 
             var timer = new DispatcherTimer
