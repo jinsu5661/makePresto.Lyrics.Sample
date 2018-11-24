@@ -18,6 +18,7 @@
             TextAlignment="Center" />
 
         <TextBlock
+            x:Name="testLytics"
             FontSize="24"
             Text="가사가 여기에 표시됩니다."
             TextAlignment="Center" />
