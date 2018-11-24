@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 
 namespace Presto.SWCamp.Lyrics
 {
+    private SortedList<TimeSpan, string> _lyrice = new SortedList<TimeSpan, string>();
     /// <summary>
     /// LyricsWindow.xaml에 대한 상호 작용 논리
     /// </summary>
