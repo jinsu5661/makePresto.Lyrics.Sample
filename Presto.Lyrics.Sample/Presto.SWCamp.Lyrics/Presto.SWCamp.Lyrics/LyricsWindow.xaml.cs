@@ -31,46 +31,48 @@ namespace Presto.SWCamp.Lyrics
             InitializeComponent();
 
             string path = @"C:\Users\cbnu\Desktop\makePresto.Lyrics.Sample\Presto.Lyrics.Sample\Musics\";
-           // string Text = "{Binding Player.CurrentMusic.Title}";
 
+            // string Text = "{Binding Player.CurrentMusic.Title}";
             // var lines = File.ReadAllLines(path + Text);
+
+           
             var lines = File.ReadAllLines(path + "볼빨간사춘기 - 여행.LRC");
 
-            //for (int i = 3; i <= lines.Length; i++)
-            foreach (string line in lines)
+            // var lines1 = File.ReadAllLines(path + Text + ".lrc");
+
+
+            
+           for (int i = 3; i <lines.Length; i++)
+            // foreach (var line in lines)
             {
-                var splitData = line.Split(']');
+                string[] splitData = lines[i].Split(']');
                 var time = TimeSpan.ParseExact("00:04.98", @"mm\:ss\.ff", CultureInfo.InvariantCulture);
 
-                while(line != null) { 
-                    testLytics.Text = line;
-                }
-                // Console.WriteLine("\t" + splitData);
+                _lyrice.Add(time, splitData[i-3]);
+               
             }
-       
-            /*  
-            for (int i = 3; i <= lines.Length; i++)
-            {
-                var splitData = lines[i].Split(']');
-                var time = TimeSpan.ParseExact("00:04.98", @"mm\:ss\.ff", CultureInfo.InvariantCulture);
-            }
-            */
-
+          
             var timer = new DispatcherTimer
             {
                 Interval = TimeSpan.FromMilliseconds(1)
             };
- 
+
             timer.Tick += Timer_Tick;
             timer.Start();
+         }
 
-
+        private static string GetLine(string line)
+        {
+            return line;
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-         //   testLytics.Text = PrestoSDK.PrestoService.Player.Position.ToString();
+           // testLytics.Text = PrestoSDK.PrestoService.Player.Position.ToString();
+            
 
         }
+
+
     }
 }
